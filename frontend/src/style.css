@@ -1,0 +1,252 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Font preloading */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtXK-F2qC0s.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtXK-F2qC0s.woff2') format('woff2');
+}
+/* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
+:root {
+  --color-primary: #8B9FE8;
+  --color-secondary: #D5B3FF;
+  --color-accent: #FFB6C1;
+  --color-background: #FEFBF6;
+  --color-text: #333333;
+  --color-card: rgba(255, 255, 255, 0.7);
+  --color-shadow: rgba(0, 0, 0, 0.05);
+}
+.dark {
+  --color-primary: #8B9FE8; /* Brightened primary */
+  --color-secondary: #D5B3FF; /* Kept vibrant */
+  --color-accent: #FFB6C1; /* Kept vibrant */
+  --color-background: #121220; /* Darkened background for more contrast */
+  --color-text: #FFFFFF; /* Pure white text for maximum contrast */
+  --color-card: rgba(30, 30, 46, 0.85); /* Less transparent, more solid */
+  --color-shadow: rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+.glass-card {
+  background: var(--color-card);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px var(--color-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark .glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Darker border in dark mode */
+}
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+.gradient-accent {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+}
+.breathing-circle {
+  animation: breathe 5s infinite ease-in-out;
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+.typing-dots span {
+  animation: typingDots 1.4s infinite both;
+  display: inline-block;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingDots {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: translateY(0) scale(0.8); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: translateY(-6px) scale(1.1); 
+  }
+}
+/* Enhanced desktop styles */
+@media (min-width: 768px) {
+  .desktop-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .desktop-sidebar {
+    position: sticky;
+    top: 1rem;
+    height: calc(100vh - 2rem);
+  }
+}
+/* New animations */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.spin-slow {
+  animation: spin 20s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+/* Dark mode text enhancement */
+.dark .enhanced-text {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+}
+.dark .card-content {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Chat message font enhancements */
+.chat-input {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.ai-response {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.005em !important;
+}
+
+.user-message {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Force font styles to persist */
+textarea.chat-input {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.01em !important;
+}
+
+p.ai-response {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.005em !important;
+}
+
+p.user-message {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Chat container styles */
+.chat-container {
+  height: calc(100vh - 80px); /* Subtract navbar height */
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 0;
+}
+
+.chat-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: linear-gradient(to top, var(--color-background) 90%, transparent);
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Ensure input aligns with chat messages */
+.chat-input-container .max-w-md {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fixed avatar styles */
+.fixed-avatar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--color-background);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+  .chat-container {
+    height: calc(100vh - 80px); /* Subtract navbar height */
+  }
+  
+  .chat-messages {
+    padding-bottom: 100px; /* Increased space for mobile to ensure last message is visible */
+  }
+  
+  .chat-input-container {
+    padding: 0.75rem;
+  }
+}

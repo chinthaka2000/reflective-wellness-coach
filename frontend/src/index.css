@@ -1,0 +1,467 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🧠 Mental Wellness AI Assistant - ReflectAI Design System */
+
+/* Core ReflectAI visual styles */
+:root {
+  --color-primary: #8B9FE8;
+  --color-secondary: #D5B3FF;
+  --color-accent: #FFB6C1;
+  --color-background: #FEFBF6;
+  --color-text: #333333;
+  --color-card: rgba(255, 255, 255, 0.7);
+  --color-shadow: rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  --color-primary: #6D83D1;
+  --color-secondary: #B28EE8;
+  --color-accent: #E89BA7;
+  --color-background: #1E1E2E;
+  --color-text: #F0F0F5;
+  --color-card: rgba(38, 38, 58, 0.7);
+  --color-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply antialiased;
+    background: var(--color-background);
+    color: var(--color-text);
+    /* Prevent text selection on UI elements */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Allow text selection in content areas */
+  .selectable {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-card);
+    @apply rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    @apply rounded-full;
+    opacity: 0.7;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+  }
+}
+
+@layer components {
+  /* Core UI component styles */
+  .glass-card {
+    background: var(--color-card);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px var(--color-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+  }
+
+  /* ReflectAI button styles */
+  .btn-reflect {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    @apply text-white shadow-lg hover:shadow-xl;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    @apply active:scale-95;
+    backdrop-filter: blur(10px);
+  }
+  
+  .btn-reflect-secondary {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    background: var(--color-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text);
+    @apply shadow-md hover:shadow-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    @apply active:scale-95;
+  }
+  
+  .btn-reflect-ghost {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+    color: var(--color-text);
+    @apply hover:text-primary;
+    background: transparent;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+  .btn-reflect-ghost:hover {
+    background: rgba(139, 159, 232, 0.10); /* fallback for hover:bg-primary/10 */
+  }
+  
+  /* Card styles */
+  .card-reflect {
+    @apply glass-card;
+    @apply transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+  }
+  
+  .card-wellness {
+    @apply card-reflect;
+  }
+  
+  .card-mood {
+    @apply glass-card;
+    @apply transition-all duration-200 hover:shadow-lg;
+  }
+  
+  /* Input styles */
+  .input-reflect {
+    @apply w-full px-4 py-3 rounded-xl;
+    background: var(--color-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text);
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply transition-all duration-200 placeholder-gray-400;
+    @apply shadow-sm hover:shadow-md;
+  }
+  
+  .input-wellness {
+    @apply input-reflect;
+  }
+  
+  /* Message styles */
+  .message-user {
+    @apply ml-auto max-w-xs lg:max-w-md px-4 py-3 rounded-2xl;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    @apply text-white shadow-lg selectable;
+    backdrop-filter: blur(10px);
+  }
+  
+  .message-assistant {
+    @apply mr-auto max-w-xs lg:max-w-md px-4 py-3 rounded-2xl;
+    @apply glass-card;
+    color: var(--color-text);
+    @apply shadow-md selectable;
+  }
+  
+  /* Animation classes */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+  
+  .pulse-soft {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+  
+  .breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  
+  /* Typing indicator */
+  .typing-indicator {
+    @apply flex items-center space-x-1;
+  }
+  
+  .typing-dot {
+    @apply w-2 h-2 rounded-full;
+    background: var(--color-primary);
+    animation: typingDots 1.4s ease-in-out infinite both;
+  }
+  
+  .typing-dot:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+  
+  .typing-dot:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  
+  /* Mood selector styles */
+  .mood-selector {
+    @apply grid grid-cols-5 gap-2 p-4;
+  }
+  
+  .mood-button {
+    @apply flex flex-col items-center justify-center p-3 rounded-xl;
+    @apply glass-card;
+    @apply transition-all duration-200 hover:shadow-md;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+  
+  .mood-button.selected {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    @apply text-white scale-110;
+  }
+  
+  /* Personality mode selector */
+  .personality-mode {
+    @apply p-4 rounded-xl glass-card;
+    @apply transition-all duration-200 hover:shadow-md cursor-pointer;
+  }
+  
+  .personality-mode.active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    @apply text-white shadow-lg;
+  }
+  
+  /* Task styles */
+  .task-card {
+    @apply p-4 rounded-xl glass-card;
+    @apply transition-all duration-200 hover:shadow-md;
+  }
+  
+  .task-priority-low {
+    border-left: 4px solid #00b894;
+  }
+  
+  .task-priority-medium {
+    border-left: 4px solid #fdcb6e;
+  }
+  
+  .task-priority-high {
+    border-left: 4px solid #e17055;
+  }
+  
+  .task-priority-urgent {
+    border-left: 4px solid #d63031;
+  }
+  
+  /* Wellness theme colors (preserved for mood tracking) */
+  .bg-calm {
+    background: linear-gradient(135deg, #e6f3f7 0%, #d1ecf1 100%);
+  }
+  
+  .bg-peaceful {
+    background: linear-gradient(135deg, #b8e6d1 0%, #a8dcc0 100%);
+  }
+  
+  .bg-energetic {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  }
+  
+  .bg-warm {
+    background: linear-gradient(135deg, #fab1a0 0%, #e17055 100%);
+  }
+  
+  .bg-cool {
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  }
+  
+  /* Responsive design helpers */
+  .mobile-padding {
+    @apply px-4 sm:px-6;
+  }
+  
+  .container-wellness {
+    @apply max-w-7xl mx-auto mobile-padding;
+  }
+  
+  /* Accessibility improvements */
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+  
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+@layer utilities {
+  /* Text gradient utilities */
+  .text-gradient-reflect {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    @apply bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-wellness {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-calm {
+    @apply bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent;
+  }
+  
+  /* Shadow utilities */
+  .shadow-reflect {
+    box-shadow: 0 4px 24px var(--color-shadow);
+  }
+  
+  .shadow-wellness {
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shadow-mood {
+    box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+  
+  .animate-pulse-soft {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+  
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+}
+
+/* Keyframe definitions */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { 
+    transform: translateY(10px); 
+    opacity: 0; 
+  }
+  100% { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-5px); 
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.7; 
+  }
+}
+
+@keyframes breathe {
+  0%, 100% { 
+    transform: scale(0.95); 
+    opacity: 0.7; 
+  }
+  50% { 
+    transform: scale(1.05); 
+    opacity: 1; 
+  }
+}
+
+@keyframes typingDots {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: translateY(0); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: translateY(-4px); 
+  }
+}
+
+@keyframes typingDot {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    @apply text-black bg-white;
+  }
+  
+  .card-reflect,
+  .card-wellness,
+  .card-mood {
+    @apply shadow-none border border-gray-300;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-reflect {
+    @apply border-2 border-black;
+  }
+  
+  .card-reflect,
+  .card-wellness,
+  .card-mood {
+    @apply border-2 border-gray-800;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .bounce-gentle,
+  .pulse-soft,
+  .breathe {
+    animation: none;
+  }
+}
